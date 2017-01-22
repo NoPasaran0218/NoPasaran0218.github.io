@@ -8,7 +8,6 @@
         $menu = $wrapper.find('.tab-menu li'),
         $content = $wrapper.find('.thumbs-row');
 
-
       $content.not(':first-of-type').hide();
       $content.each(function (i) {
         $(this).attr('data-tab', 'tab-' + i);
@@ -29,6 +28,30 @@
       });
     }
     blueasyTabs();
+    
+    function blueasyPortfolio() {
+      var $wrapper = $('.tab-wrapper'),
+          $menu=$wrapper.find('.tab-select option'),
+          $slct=$('#options'),
+          $content=$wrapper.find('thumbs-row');
+      $content.not(':first-of-type').hide();
+      $content.each(function(i) {
+        $(this).attr('data-tab','tab1-'+i);
+      });
+      $menu.each(function(i) {
+        $(this).attr('data-tab','tab-'+i);
+      });
+      
+        
+      $slct.change(function() {
+        var dataTab = 'tab-'+$(this).val(),
+            $content=$('.thumbs-row');
+        
+        $content.hide();
+        $content.filter('[data-tab='+dataTab+']').show();
+      });
+    }
+    blueasyPortfolio();
 
     function blueasyMenu() {
       var $trigger = $('.trigger-nav'),
@@ -45,6 +68,7 @@
       });
     }
     blueasyMenu();
+    
 
   }); //end ready
 
